@@ -1,4 +1,6 @@
 {%extends 'api/base.html'%}
 {%block content%}
-    <p>home</p>
+    {%for data in datas %}
+        {{data.url}}
+    {%endfor%}
 {%endblock content%}

@@ -1,4 +1,5 @@
 from pickle import NONE
+from unittest import result
 from django.shortcuts import redirect, render
 from .forms import regUserForm
 from django.contrib.auth import authenticate, login
@@ -6,9 +7,10 @@ from rest_framework.decorators import  api_view
 from rest_framework.response import Response
 from .models import Site
 from .serializer import SiteSerializer
+from urllib import request, response
+import json
 # Create your views here.
-def home(req):
-    return  render (req, 'api/home.html')
+
 
 def regUser(req):
     form=regUserForm()
@@ -49,6 +51,19 @@ def api(req):
         site=Site.objects.all()
         serializedSite=SiteSerializer(site , many=True)
         return Response(serializedSite.data)
+
+def home(req):
+    url='http://127.0.0.1:8000/sites'
+    response=request.urlopen(url)
+    result=response.read()
+    data=json.loads(result)
+    print(data)
+
+
+   
+
+
+    return render(req, 'api/home.html' , {'datas':data})
 
 
 
