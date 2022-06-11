@@ -33,4 +33,7 @@ def loginUser(req):
 
     return render(req, 'api/login.html')
 
+
+def userProfile(req):
+    return render (req, 'api/profile.html')
     
