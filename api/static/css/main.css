@@ -143,5 +143,19 @@
 .imageProfile{
     height: 100%;
     width: 100%;
-    object-fit: contain;
+    object-fit: cover;
+}
+
+.details{
+    position: absolute;
+    top: 50%;
+    left:42%;
+    color: white;
+
+
+}
+
+.profileIcon{
+    position: relative;
+    left:-20%
 }
