@@ -2,6 +2,10 @@ from pickle import NONE
 from django.shortcuts import redirect, render
 from .forms import regUserForm
 from django.contrib.auth import authenticate, login
+from rest_framework.decorators import  api_view
+from rest_framework.response import Response
+from .models import Site
+from .serializer import SiteSerializer
 # Create your views here.
 def home(req):
     return  render (req, 'api/home.html')
@@ -37,3 +41,17 @@ def loginUser(req):
 def userProfile(req):
     return render (req, 'api/profile.html')
     
+
+
+@api_view(['GET'])
+def api(req):
+    if req.method=='GET':
+        site=Site.objects.all()
+        serializedSite=SiteSerializer(site , many=True)
+        return Response(serializedSite.data)
+
+
+
+
+
+

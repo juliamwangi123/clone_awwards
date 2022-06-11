@@ -24,3 +24,6 @@ class Site(models.Model):
     url=models.URLField(null=False)
     date_posted=models.DateTimeField(default=timezone.now)
 
+    def __str__(self):
+        return self.url
+
