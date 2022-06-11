@@ -10,6 +10,9 @@ class regUserForm(UserCreationForm):
     password1=forms.CharField(
         widget=forms.PasswordInput(attrs={'placeholder':'Password', 'class':'form-field'})
     )
+    email=forms.CharField(
+        widget=forms.EmailInput(attrs={'placeholder':'Email', 'class':'form-field'})
+    )
     password2=forms.CharField(
         widget=forms.PasswordInput(attrs={'placeholder':' Confirm Password', 'class':'form-field'})
     )
@@ -17,4 +20,4 @@ class regUserForm(UserCreationForm):
     check_2=forms.BooleanField()
     class Meta:
         model=User
-        fields=['username', 'password1', 'password2', 'check_1',  'check_2']
+        fields=['username', 'email' , 'password1', 'password2', 'check_1',  'check_2']
