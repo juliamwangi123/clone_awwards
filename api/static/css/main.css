@@ -117,3 +117,8 @@
 .or{
     margin: 10px;
 }
+.innerItems{
+    display: flex;
+    justify-content: space-evenly;
+}
+
