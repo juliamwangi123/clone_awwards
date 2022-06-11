@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" href="../../static/css/main.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container  reg" >
+        <div class="card  innerContainer" style="border: none;">
+            <div class="register">
+                <h6>Register with</h6>
+                <h3>Are you a member?<a href="" style="margin-left:6px;color: #49c5b6;">Login now</a></h3>
+            </div>
+            <div class="icons">
+                <p style="font-weight: 600; color:black;border: 2px solid silver;"> <img src="../../static/images/googlei.png" alt="" class="google"> Google </p>
+                <p class="twiiter" style="color: white; font-size: 15px;"><i class="bi bi-twitter" > </i>Twitter </p>
+                <p style="background-color:#325595 ;color:white ;"><i class="bi bi-facebook" ></i> Facebook </p>
+
+            </div>
+
+            <div class="or">
+                <strong style="font-weight: 600; font-size:17px;color:#202121">Or with your E-mail</strong>
+            </div>
+            <div class="formCOntinater">
+            <form action="" method="POST">
+                {%csrf_token%}
+                <div class="input-group mb-2"> 
+                    {{form.username}}
+        
+                </div>
+                <div class="input-group mb-2">
+                    {{form.password1}}
+        
+                </div>
+                <div class="input-group mb-2">
+                    {{form.password2}}
+        
+                </div>
+       
+        <div class="d-flex justify-content-center mt-3 items">
+           <p>Awwwards may keep me informed with personalized emails about products and services. See our <span style="color:#25b6e6; font-weight: 600;">Privacy Policy </span> for more details.
+
+        </p>
+           </div>
+           <div class="check_2">
+            {{form.check_1}} <span>Please contact me via email</span> <br><br>
+
+        </div>
+        <div class="check_2">
+            {{form.check_2}} <span>I have read and accepted the Terms and Conditions and  <span style="color:#25b6e6; font-weight: 600;">Privacy Policy </span></span>
+
+        </div>
+
+           <div class="input-group mb-1 mt-3">
+            <input type="submit" value="CREATE YOUR ACCOUNT" class="form-field" style="background-color:#49c5b6 ; color:white">
+
+
+        </div>
+        </form>
+    </div>
+   
+    </div>
+</body>
+</html>
