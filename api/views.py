@@ -65,8 +65,12 @@ def home(req):
     }
 
     
-
     return render(req, 'api/home.html' , context)
+
+
+
+def submit_site(req):
+     return render (req, 'api/submit.html')
 
 
 
