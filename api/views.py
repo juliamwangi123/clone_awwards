@@ -1,3 +1,4 @@
+from multiprocessing import context
 from pickle import NONE
 from unittest import result
 from django.shortcuts import redirect, render
@@ -57,13 +58,15 @@ def home(req):
     response=request.urlopen(url)
     result=response.read()
     data=json.loads(result)
-    print(data)
+    top=data[0]
+    context={
+        'top':top,
+        'datas':data
+    }
 
+    
 
-   
-
-
-    return render(req, 'api/home.html' , {'datas':data})
+    return render(req, 'api/home.html' , context)
 
 
 

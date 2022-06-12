@@ -159,3 +159,14 @@
     position: relative;
     left:-20%
 }
+
+.recent{
+    height: 500px;
+    width:100%;
+}
+.recent img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    filter: brightness(50%);
+}
