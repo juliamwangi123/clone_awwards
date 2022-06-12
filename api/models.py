@@ -27,3 +27,11 @@ class Site(models.Model):
     def __str__(self):
         return self.url
 
+
+class Votes(models.Model):
+    person_voting=models.OneToOneField(User, on_delete=models.CASCADE)
+    creativity=models.IntegerField()
+    design=models.IntegerField()
+    usability=models.IntegerField()
+
+

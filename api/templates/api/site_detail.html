@@ -1,0 +1,83 @@
+{%extends 'api/base.html'%}
+{%block content%}
+<div class="container">
+    <div class="individualImage">
+        <img src="{{site.image.url}}" alt="">
+    </div>
+
+    <div id="vote" >
+        <h4>Design</h4>
+        <button value="1" class="one">1</button>
+        <button value="2" class="one">2</button>
+        <button value="3" class="one">3</button>
+        <button value="4" class="one">4</button>
+        <button value="5" class="one">5</button>
+
+      
+    </div>
+    <div id="vote2" style="display: hidden;">
+        <h4>Usability</h4>
+
+        <button value="1" class="one">1</button>
+        <button value="2" class="one">2</button>
+        <button value="3" class="one">3</button>
+        <button value="4" class="one">4</button>
+        <button value="5" class="one">5</button>
+      
+    </div>
+
+    <div id="vote2" style="display: hidden;">
+        <h4>Creativity</h4>
+
+        <button value="1" class="one">1</button>
+        <button value="2" class="one">2</button>
+        <button value="3" class="one">3</button>
+        <button value="4" class="one">4</button>
+        <button value="5" class="one">5</button>
+      
+    </div>
+
+</div>
+
+<script>
+    let btn=document.querySelectorAll('button')
+    let arr=[]
+
+   btn.forEach(function(btn) {
+  btn.addEventListener('click', (e)=>{
+    let v=btn.value
+
+      e.preventDefault()
+      arr.push(v)
+      let totalVotes=arr.map(Number)
+     console.log(totalVotes);
+     var sum = totalVotes.reduce(function(a, b){
+        return a + b;
+    }, 0);
+     
+     console.log(sum)
+     let c=document.getElementById('vote')
+     let c2=document.getElementById('vote2')
+
+     c.style.visibility = 'hidden';
+     c2.style.visibility = 'visible';
+
+
+
+
+     
+
+
+
+
+
+     
+
+     
+  });
+});
+
+   
+
+</script>
+{%endblock content%}

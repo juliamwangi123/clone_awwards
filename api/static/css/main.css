@@ -210,3 +210,43 @@
     margin-left: 14px;
 
 }
+
+.individualImage{
+    height:500px ;
+    display: flex;
+    justify-content: center;
+}
+.individualImage img{
+    height: 100%;
+    width: 70%;
+    object-fit: cover;
+    margin-top: 50px;
+}
+
+.individualImage img:hover{
+    filter: brightness(50%);
+
+}
+
+.one{
+    padding: 10px 30px;
+    width: 15%;
+
+}
+#vote{
+    margin-top: 100px;
+    margin-left: 160px;
+    width: 70%;
+    text-align: center;
+
+
+}
+
+#vote2{
+    margin-top: 20px;
+    margin-left: 160px;
+    width: 70%;
+    text-align: center;
+
+
+}

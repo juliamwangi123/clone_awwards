@@ -9,6 +9,8 @@ from urllib import request, response
 import json
 from django.views.generic import DetailView
 from .models  import Site
+from django.contrib.auth.decorators import login_required
+
 # Create your views here.
 
 
@@ -39,11 +41,9 @@ def loginUser(req):
 
     return render(req, 'api/login.html')
 
-
 def userProfile(req):
     return render (req, 'api/profile.html')
     
-
 
 @api_view(['GET'])
 def api(req):
@@ -65,7 +65,6 @@ def home(req):
 
     
     return render(req, 'api/home.html' , context)
-
 
 
 def submit_site(req):
