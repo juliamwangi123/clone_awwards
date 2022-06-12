@@ -3,7 +3,7 @@
 <div class="container">
 <div class="formCOntinater" style="width: 60%; margin:50px auto">
     <h5>Submit Your Site</h5>
-    <form action="" method="POST">
+    <form action="" method="POST"  enctype="multipart/form-data">
         {%csrf_token%}
         <div class="input-group mb-2"> 
             <input type="text" name="name" placeholder="Name of the site" class="form-field">
@@ -14,7 +14,7 @@
 
         </div>
         <div class="input-group ">
-            <input type="file" name="url" placeholder="Site image"  >
+            <input type="file" name="image" placeholder="Site image"  >
 
         </div>
        

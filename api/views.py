@@ -1,5 +1,6 @@
 from multiprocessing import context
 from pickle import NONE
+import re
 from unittest import result
 from django.shortcuts import redirect, render
 from .forms import regUserForm
@@ -70,8 +71,18 @@ def home(req):
 
 
 def submit_site(req):
-    
-     return render (req, 'api/submit.html')
+    if req.method == "POST" :
+        name=req.POST.get('name')
+        url=req.POST.get('url')
+        image=req.FILES['image']
+        site= Site(owner=req.user, image=image, url=url, name=name)
+        print(image)
+        site.save()
+        return redirect('home')
+        
+
+
+    return render (req, 'api/submit.html')
 
 
 
