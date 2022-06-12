@@ -70,6 +70,7 @@ def home(req):
 
 
 def submit_site(req):
+    
      return render (req, 'api/submit.html')
 
 

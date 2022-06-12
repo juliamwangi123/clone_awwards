@@ -1,4 +1,33 @@
 {%extends 'api/base.html'%}
 {%block content%}
-    <p>submit</p>
+<div class="container">
+<div class="formCOntinater" style="width: 60%; margin:50px auto">
+    <h5>Submit Your Site</h5>
+    <form action="" method="POST">
+        {%csrf_token%}
+        <div class="input-group mb-2"> 
+            <input type="text" name="name" placeholder="Name of the site" class="form-field">
+
+        </div>
+        <div class="input-group mb-2">
+            <input type="url" name="url" placeholder="url" class="form-field" >
+
+        </div>
+        <div class="input-group ">
+            <input type="file" name="url" placeholder="Site image"  >
+
+        </div>
+       
+
+
+ 
+
+
+   <div class="input-group mb-1 mt-3">
+    <input type="submit" value="SUBMIT" class="form-field" style="background-color:#49c5b6 ; color:white">
+</div>
+
+</form>
+</div>
+</div>
 {%endblock%}
