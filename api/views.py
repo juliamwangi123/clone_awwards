@@ -1,7 +1,3 @@
-from multiprocessing import context
-from pickle import NONE
-import re
-from unittest import result
 from django.shortcuts import redirect, render
 from .forms import regUserForm
 from django.contrib.auth import authenticate, login
@@ -11,6 +7,8 @@ from .models import Site
 from .serializer import SiteSerializer
 from urllib import request, response
 import json
+from django.views.generic import DetailView
+from .models  import Site
 # Create your views here.
 
 
@@ -80,10 +78,13 @@ def submit_site(req):
         site.save()
         return redirect('home')
         
-
-
     return render (req, 'api/submit.html')
 
+
+
+class SiteDetailView(DetailView):
+    model=Site
+    context_object_name='site'
 
 
 
