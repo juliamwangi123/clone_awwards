@@ -42,7 +42,8 @@ def loginUser(req):
     return render(req, 'api/login.html')
 
 def userProfile(req):
-    return render (req, 'api/profile.html')
+    data=Site.objects.filter(owner=req.user)
+    return render (req, 'api/profile.html', {'datas':data})
     
 
 @api_view(['GET'])
@@ -84,6 +85,9 @@ def submit_site(req):
 class SiteDetailView(DetailView):
     model=Site
     context_object_name='site'
+
+
+
 
 
 
