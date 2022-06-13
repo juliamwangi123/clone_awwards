@@ -1,28 +1,13 @@
-{%extends 'api/base.html'%}
+{%extends 'api/base.html' %}
 {%block content%}
-
-<div class="recent">
-    <img src="{{top.image}}" alt="" >
-    <div class="topDetails">
-        <a href="{{top.url}}" style="margin-left:40px;">{{top.name}}</a>
-     <p style="color:white ;">By <span style="color: #49c5b6;font-weight: 500;">Julia MWangi</span> FROM   <span style="font-weight:600 ;color:white">{{user.profile.country}}</span></p>
-    
-    </div>
-
-    <div class="site">
-        <a href="{{top.url}}">Visit Site</a>
-        <p>Collect</p>
-    </div>
-
-</div>
 
 <div class="container-fluid">
     <h3 style="font-weight:600 ;margin-top: 30px;">Sites</h3>
     <div class="row" style="display: flex; flex-wrap: wrap;">
-        {%for data in datas %}
+        {%for data in datas%}
         <div class="card" style="width: 24rem; margin:20px ;height: 500px;">
             <div class="wrap" style="height: 70%;">
-                <img src="{{data.image}}" class="card-img-top" alt="..." style="height: 100%; width: 100%; object-fit: cover;">
+                <img src="{{data.image.url}}" class="card-img-top" alt="..." style="height: 100%; width: 100%; object-fit: cover;">
             </div>
          
             <div class="card-body" style="height:20% ;">
@@ -43,16 +28,4 @@
 
     </div>
 </div>
-
-<script>
-    $( document ).ready(function() {
-        $('.wrap').mouseover(function () {
-    $('.p').show();
-}).mouseout(function () {
-    $('.p').hide();
-});
-});
-</script>
-
-
 {%endblock content%}

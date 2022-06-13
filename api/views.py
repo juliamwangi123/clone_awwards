@@ -1,5 +1,8 @@
+from multiprocessing import context
+from unicodedata import name
+from django.http import HttpResponse
 from django.shortcuts import redirect, render
-from .forms import regUserForm
+from .forms import regUserForm,ReviewForm
 from django.contrib.auth import authenticate, login
 from rest_framework.decorators import  api_view
 from rest_framework.response import Response
@@ -11,6 +14,8 @@ from django.views.generic import DetailView
 from .models  import Site
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
+from django.db.models import Q
+
 
 
 # Create your views here.
@@ -89,9 +94,48 @@ def submit_site(req):
 
 
 
-class SiteDetailView(DetailView):
-    model=Site
-    context_object_name='site'
+# class SiteDetailView(DetailView):
+#     model=Site
+#     context_object_name='site'
+#     form=ReviewForm()
+
+def ReviewView(request,id):
+    form = ReviewForm()
+    site= Site.objects.get(id=id)
+    user  = request.user
+    if request.method == 'POST':
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            data = form.save(commit=False)
+            data.user = user
+            data.project = site
+            data.save()
+            return HttpResponse('Thank you for your feedback')
+    context = {
+        'site':site,
+        'form':form,
+    }
+
+    return render(request, 'api/site_detail.html', context)
+
+
+def search_project(req):
+
+    if req.method=='GET':
+        search_site = req.GET.get("search")
+        print(search_site)
+        if search_site:
+            data=Site.objects.filter(name__icontains=search_site)
+            return render(req, 'api/results.html', {'datas':data})
+
+       
+    
+
+
+
+    
+
+    # return render(request, 'results.html', context )
 
 
 

@@ -278,3 +278,12 @@
     filter: brightness(50%);
 
 }
+.review{
+    width: 800px;
+    border-radius: 21px;
+    background: #F5F5F5;
+    box-shadow:  8px 8px 15px #626262,
+                 -8px -8px 15px #FFFFFF;
+    margin-left: 140px;
+    height: 200px;
+}

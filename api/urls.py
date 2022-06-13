@@ -1,5 +1,4 @@
 from django.urls import path
-from .views import SiteDetailView
 from django.contrib.auth import views as auth_views
 
 from . import views
@@ -11,7 +10,8 @@ urlpatterns=[
     path('profile', views.userProfile, name='profile'),
     path('sites', views.api,  name='sites'),
     path('submit-site',views.submit_site, name='submit-site'),
-    path('site/<int:pk>/', SiteDetailView.as_view() , name='site_details'),
+    path('site/<int:id>/', views.ReviewView , name='site_details'),
+    path('results', views.search_project, name='results'),
 
 
     # path('logout', auth_views.LogoutView.as_view(template_name="api/logout.html"), name='logout'),

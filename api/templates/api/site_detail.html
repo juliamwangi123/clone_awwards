@@ -3,43 +3,39 @@
 <div class="container">
     <div class="individualImage">
         <img src="{{site.image.url}}" alt="">
+
+    </div>
+    <div class="col-md-4">
+        <div class="review">
+          <h2 class="px-5">Rate Project</h2>
+          <form class="px-5 py-2" method="post" action="">
+              {% csrf_token %}
+              <label for=""><strong>Design:</strong></label>
+             <div>
+                {{ form.design }}
+            </div>
+            <br>
+            <label for=""><strong>Usability:</strong></label>
+            <div>
+               {{ form.usability }}
+           </div>
+           <br>
+           <label for=""><strong>Content:</strong></label>
+           <div>
+              {{ form.content }}
+          </div>
+          <br>
+            <label for="textarea1"><strong>Review</strong></label>
+                {{ form.review }}
+            <button class="btn btn-success btn-sm" type="submit">Submit</button>
+          </form>
+        </div>
     </div>
 
-    <div id="vote" >
-        <h4>Design</h4>
-        <button value="1" class="one">1</button>
-        <button value="2" class="one">2</button>
-        <button value="3" class="one">3</button>
-        <button value="4" class="one">4</button>
-        <button value="5" class="one">5</button>
-
-      
-    </div>
-    <div id="vote2" style="display: hidden;">
-        <h4>Usability</h4>
-
-        <button value="1" class="one">1</button>
-        <button value="2" class="one">2</button>
-        <button value="3" class="one">3</button>
-        <button value="4" class="one">4</button>
-        <button value="5" class="one">5</button>
-      
-    </div>
-
-    <div id="vote2" style="display: hidden;">
-        <h4>Creativity</h4>
-
-        <button value="1" class="one">1</button>
-        <button value="2" class="one">2</button>
-        <button value="3" class="one">3</button>
-        <button value="4" class="one">4</button>
-        <button value="5" class="one">5</button>
-      
-    </div>
-
+    
 </div>
 
-<script>
+<!-- <script>
     let btn=document.querySelectorAll('button')
     let arr=[]
 
@@ -54,8 +50,11 @@
      var sum = totalVotes.reduce(function(a, b){
         return a + b;
     }, 0);
+    console.log(sum)
+
+    let average=sum/3
+    console.log(average)
      
-     console.log(sum)
      let c=document.getElementById('vote')
      let c2=document.getElementById('vote2')
 
@@ -75,7 +74,7 @@
 
      
   });
-});
+}); -->
 
    
 

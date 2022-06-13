@@ -20,8 +20,8 @@
         <div class="container-fluid innerItems"  style="height: 100%;" >
             <div class="one" style="border-right: 1px solid silver ; margin-right:50px; " > <a class="navbar-brand" href="#" style="font-size: 16px;color:black; font-weight: 500;"> <i class="bi bi-list" style="margin-right:10px ;"></i>Menu</a></div>
          
-          <form class="d-flex" role="search" style="margin-right:200px ;">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <form class="d-flex" role="search" style="margin-right:200px ;" action="{%url 'results'%}" method="GET">
+            <input class="form-control me-2" type="search" name="search" placeholder="Search" aria-label="Search">
           </form>
           <div class="log">
               <img src="../../static/images/awward (1).png" alt="" style="margin-right: 200px;">
