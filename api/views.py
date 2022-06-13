@@ -10,6 +10,8 @@ import json
 from django.views.generic import DetailView
 from .models  import Site
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
+
 
 # Create your views here.
 
@@ -40,6 +42,11 @@ def loginUser(req):
 
 
     return render(req, 'api/login.html')
+
+
+def logoutUser(req):
+    logout(req)
+    return redirect('home')
 
 def userProfile(req):
     data=Site.objects.filter(owner=req.user)

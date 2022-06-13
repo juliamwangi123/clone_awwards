@@ -12,6 +12,9 @@ urlpatterns=[
     path('sites', views.api,  name='sites'),
     path('submit-site',views.submit_site, name='submit-site'),
     path('site/<int:pk>/', SiteDetailView.as_view() , name='site_details'),
-    path('logout', auth_views.LogoutView.as_view(template_name="api/logout.html"), name='logout'),
+
+
+    # path('logout', auth_views.LogoutView.as_view(template_name="api/logout.html"), name='logout'),
+    path('logout', views.logoutUser, name='logout')
 
 ]

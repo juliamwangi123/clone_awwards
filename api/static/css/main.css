@@ -250,3 +250,31 @@
 
 
 }
+.visit{
+    position: relative;
+    bottom: 25%;
+    right: 10%;
+    padding: 3px;
+    font-size: 13px;
+    border-radius: 25px;
+}
+.wrap{
+    position: relative;
+}
+.p{
+    position: absolute;
+    top: 40%;
+    left: 40%;
+    transition: .7s ease;
+    border: 2px solid black;
+    padding: 5px;
+    border-radius: 25px;
+    font-weight: 800;
+
+
+}
+
+.card-img-top:hover{
+    filter: brightness(50%);
+
+}

@@ -20,11 +20,14 @@
     <h3 style="font-weight:600 ;margin-top: 30px;">Sites</h3>
     <div class="row" style="display: flex; flex-wrap: wrap;">
         {%for data in datas %}
-        <div class="card" style="width: 24rem; margin:20px">
-            <img src="{{data.image}}" class="card-img-top" alt="..." style="height: 100%; width: 100%;">
-            <div class="card-body">
+        <div class="card" style="width: 24rem; margin:20px ;height: 500px;">
+            <div class="wrap" style="border: 2px solid red;height: 70%;">
+                <img src="{{data.image}}" class="card-img-top" alt="..." style="height: 100%; width: 100%; object-fit: cover;">
+            </div>
+         
+            <div class="card-body" style="height:20% ;">
               <h5 class="card-title"><a href="{{data.url}}" style="color:black">{{data.name}}</a></h5>
-              <a href="{{top.url}}" style="border:2px solid black ; margin-left:270px; margin-bottom:40px ;">Visit Site</a>
+              <a href="{{top.url}}" class="visit" style="border:2px solid black ; margin-left:270px; margin-bottom:40px ;">Visit Site</a>
 
 
               <div class="card-text">
@@ -40,6 +43,16 @@
 
     </div>
 </div>
+
+<script>
+    $( document ).ready(function() {
+        $('.wrap').mouseover(function () {
+    $('.p').show();
+}).mouseout(function () {
+    $('.p').hide();
+});
+});
+</script>
 
 
 {%endblock content%}
