@@ -4,7 +4,7 @@
 <div class="recent">
     <img src="{{top.image}}" alt="" >
     <div class="topDetails">
-        <a href="{{top.url}}">{{top.name}}</a>
+        <a href="{{top.url}}" style="margin-left:40px;">{{top.name}}</a>
      <p style="color:white ;">By <span style="color: #49c5b6;font-weight: 500;">Julia MWangi</span> FROM   <span style="font-weight:600 ;color:white">{{user.profile.country}}</span></p>
     
     </div>
@@ -17,7 +17,7 @@
 </div>
 
 <div class="container-fluid">
-    <h3>Sites</h3>
+    <h3 style="font-weight:600 ;margin-top: 30px;">Sites</h3>
     <div class="row" style="display: flex; flex-wrap: wrap;">
         {%for data in datas %}
         <div class="card" style="width: 24rem; margin:20px">

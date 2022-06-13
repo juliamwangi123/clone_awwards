@@ -57,7 +57,7 @@ def home(req):
     response=request.urlopen(url)
     result=response.read()
     data=json.loads(result)
-    top=data[0]
+    top=data[2]
     context={
         'top':top,
         'datas':data
