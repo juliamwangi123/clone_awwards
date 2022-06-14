@@ -22,29 +22,24 @@ class Site(models.Model):
     name=models.CharField(max_length=40, blank=True, null=True)
     url=models.URLField(null=False)
     date_posted=models.DateTimeField(default=timezone.now)
+    reviews=models.ManyToManyField('Review',blank=True)
 
 
     def __str__(self):
         return self.url
 
 RATE_CHOICES =[
-    (1, '1- Very Dissatisfied'),
-    (2, '2- Dissatisfied'),
-    (3, '3- bad'),
-    (4, '4- OK'),
-    (5, '5- neutral'),
-    (6, '6- good'),
-    (7, '7- very good'),
-    (8, '8- Extremly good'),
-    (9, '9- Perfect'),
-    (10, '10 - Master Piece'),
+    (1, '1'),
+    (2, '2'),
+    (3, '3'),
+    (4, '4'),
+    (5, '5'),
+   
  ]
 class Review(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     project = models.ForeignKey(Site, on_delete=models.CASCADE)
-    design = models.PositiveSmallIntegerField(default=0, choices=RATE_CHOICES)
-    usability = models.PositiveSmallIntegerField(default=0, choices=RATE_CHOICES)
-    content = models.PositiveSmallIntegerField(default=0, choices=RATE_CHOICES)
-   
+    review=models.TextField()
+    review_rating=models.CharField(choices=RATE_CHOICES, max_length=130,null=True)
 
 
