@@ -2,9 +2,9 @@
 {%block content%}
 
 <div class="recent">
-    <img src="{{top.image}}" alt="" >
+    <img src="{{top.image}}" alt=""  style="object-fit: cover;">
     <div class="topDetails">
-        <a href="{{top.url}}" style="margin-left:40px;">{{top.name}}</a>
+        <a href="{{top.url}}" >{{top.name}}</a>
      <p style="color:white ;">By <span style="color: #49c5b6;font-weight: 500;">Julia MWangi</span> FROM   <span style="font-weight:600 ;color:white">{{user.profile.country}}</span></p>
     
     </div>
@@ -22,21 +22,29 @@
         {%for data in datas %}
         <div class="card" style="width: 24rem; margin:20px ;height: 500px;">
             <div class="wrap" style="height: 70%;">
-                <img src="{{data.image}}" class="card-img-top" alt="..." style="height: 100%; width: 100%; object-fit: cover;">
+                <img src="{{data.image.url}}" class="card-img-top" alt="..." style="height: 100%; width: 100%; object-fit: cover;">
             </div>
          
             <div class="card-body" style="height:20% ;">
-              <h5 class="card-title"><a href="{{data.url}}" style="color:black">{{data.name}}</a></h5>
-              <a href="{{data.url}}" class="visit" style="border:2px solid black ; margin-left:270px; margin-bottom:40px ;">Visit Site</a>
+                <div class="topPart" style="display:flex ; justify-content: space-between;">
+                    <p class="card-title"><a href="{{data.url}}" style="color:black; font-weight: 800;">{{data.name}}</a></p>
+                    <a href="{{data.url}}"  style="border:1px solid black ; height: 10%; border-radius: 10px; font-size: 13px;color: black; padding:0 3px">Visit Site</a>
+                </div>
+         
 
-
-              <div class="card-text">
-                  <p>From {{user.profile.country}}</p>
+              <div class="card-text" style="display: flex; justify-content:space-between">
+                  <p style="font-size: 13px;">From {{user.profile.country}}</p>
+                  <small>{{data.date_posted|date:"M d, Y"}}</small>
                  
               </div>
 
+              <hr>
 
-              <a href="{{data.owner}}" class="btn btn-primary">{{data.owner}}</a>
+              <img class="rounded-circle z-depth-2" alt="100x100" src="{{ data.owner.profile.image.url }}"
+              data-holder-rendered="true" style="height:35% ;position: relative; bottom: 15%;">
+            <a href="{{data.owner.profile}}" style="color:black ; font-size:13px; position: relative; bottom: 15%;" > By <span style="font-weight: 600;">{{data.owner}}</span></a>
+
+
             </div>
           </div>
           {%endfor%}

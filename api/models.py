@@ -42,11 +42,9 @@ RATE_CHOICES =[
 class Review(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     project = models.ForeignKey(Site, on_delete=models.CASCADE)
-    review = models.CharField(max_length=2000, blank=True)
     design = models.PositiveSmallIntegerField(default=0, choices=RATE_CHOICES)
     usability = models.PositiveSmallIntegerField(default=0, choices=RATE_CHOICES)
     content = models.PositiveSmallIntegerField(default=0, choices=RATE_CHOICES)
-    def __str__(self):
-        return self.review
+   
 
 

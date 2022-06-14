@@ -1,5 +1,3 @@
-from multiprocessing import context
-from unicodedata import name
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from .forms import regUserForm,ReviewForm
@@ -8,14 +6,13 @@ from rest_framework.decorators import  api_view
 from rest_framework.response import Response
 from .models import Site
 from .serializer import SiteSerializer
-from urllib import request, response
+from urllib import request
 import json
 from django.views.generic import DetailView
 from .models  import Site
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
-from django.db.models import Q
-
+from .models import Site
 
 
 # Create your views here.
@@ -69,11 +66,13 @@ def home(req):
     url='http://127.0.0.1:8000/sites'
     response=request.urlopen(url)
     result=response.read()
-    data=json.loads(result)
-    top=data[2]
+    site=json.loads(result)
+    top=site[2]
+    data=Site.objects.all()
     context={
         'top':top,
-        'datas':data
+        'datas':data,
+        
     }
 
     
@@ -123,7 +122,6 @@ def search_project(req):
 
     if req.method=='GET':
         search_site = req.GET.get("search")
-        print(search_site)
         if search_site:
             data=Site.objects.filter(name__icontains=search_site)
             return render(req, 'api/results.html', {'datas':data})
@@ -135,7 +133,6 @@ def search_project(req):
 
     
 
-    # return render(request, 'results.html', context )
 
 
 
