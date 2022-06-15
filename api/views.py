@@ -69,7 +69,7 @@ def api(req):
         return Response(serializedSite.data)
 
 def home(req):
-    url='http://127.0.0.1:8000/sites'
+    url='https://jullzawwards.herokuapp.com/sites'
     response=request.urlopen(url)
     result=response.read()
     site=json.loads(result)
