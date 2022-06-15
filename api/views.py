@@ -14,6 +14,9 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from .models import Site
 from .forms import ReviewForm
+from rest_framework.renderers import JSONRenderer
+from rest_framework.decorators import renderer_classes
+
 
 
 # Create your views here.
@@ -50,7 +53,7 @@ def loginUser(req):
 def logoutUser(req):
     logout(req)
     return redirect('home')
-    
+
 @login_required()
 def userProfile(req):
     data=Site.objects.filter(owner=req.user)
@@ -58,6 +61,7 @@ def userProfile(req):
     
 
 @api_view(['GET'])
+@renderer_classes([JSONRenderer])
 def api(req):
     if req.method=='GET':
         site=Site.objects.all()
