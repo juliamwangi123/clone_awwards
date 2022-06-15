@@ -1,81 +1,62 @@
 {%extends 'api/base.html'%}
 {%block content%}
 <div class="container">
+  
+
+
     <div class="individualImage">
         <img src="{{site.image.url}}" alt="">
-
     </div>
-    <div class="col-md-4">
-        <div class="review">
-          <h2 class="px-5">Rate Project</h2>
-          <form class="px-5 py-2" method="post" action="">
-              {% csrf_token %}
-              <label for=""><strong>Design:</strong></label>
-             <div>
-                {{ form.design }}
-            </div>
+    {% if user.is_authenticated %}
+    <button data-toggle="modal" data-target="siteReview" type="button" class="btn btn-warning btn-sm  reviewBtn" style="margin-left: 200px; margin-top: 80px;">Add Review</button>
+
+    {% endif %}
+
+    <div >
+      <form class="reviewform" style="display: none;"  method="POST">
+        {%csrf_token%}
+        <div class="form-group">
+          <div class="input-group mb-2"> 
+            <label for="">Review</label> 
             <br>
-            <label for=""><strong>Usability:</strong></label>
-            <div>
-               {{ form.usability }}
-           </div>
-           <br>
-           <label for=""><strong>Content:</strong></label>
-           <div>
-              {{ form.content }}
-          </div>
-          <br>
-            
-            <button class="btn btn-success btn-sm" type="submit">Submit</button>
-          </form>
+  
+            {{form.review}}
+  
         </div>
+        <div class="input-group mb-2">
+          <label for="">Rate</label>
+          <br>
+   
+          {{form.review_rating}}
+  
+      </div>
+          
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
     </div>
-
-    
-</div>
-
-<!-- <script>
-    let btn=document.querySelectorAll('button')
-    let arr=[]
-
-   btn.forEach(function(btn) {
-  btn.addEventListener('click', (e)=>{
-    let v=btn.value
-
-      e.preventDefault()
-      arr.push(v)
-      let totalVotes=arr.map(Number)
-     console.log(totalVotes);
-     var sum = totalVotes.reduce(function(a, b){
-        return a + b;
-    }, 0);
-    console.log(sum)
-
-    let average=sum/3
-    console.log(average)
-     
-     let c=document.getElementById('vote')
-     let c2=document.getElementById('vote2')
-
-     c.style.visibility = 'hidden';
-     c2.style.visibility = 'visible';
-
-
-
-
-     
-
-
-
-
-
-     
-
-     
-  });
-}); -->
 
    
+
+    </div>
+   
+    <script>
+        $( document ).ready(function() {
+        $('.reviewBtn').click(function () {
+        $('.reviewform').show();
+          })
+
+});
+    </script>
+   
+
+
+
+     
+
+
+
+
+
 
 </script>
 {%endblock content%}

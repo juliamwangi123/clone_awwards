@@ -25,10 +25,7 @@ class regUserForm(UserCreationForm):
 
 
 class ReviewForm(forms.ModelForm):
-    review = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control'}),required=True)
-    design = forms.ChoiceField(choices=RATE_CHOICES, widget= forms.Select(),required=True)
-    usability = forms.ChoiceField(choices=RATE_CHOICES, widget= forms.Select(),required=True)
-    content = forms.ChoiceField(choices=RATE_CHOICES, widget= forms.Select(),required=True)
+    
     class Meta:
         model = Review
-        fields = ['review', 'design','usability','content']
+        fields = ['review', 'review_rating']

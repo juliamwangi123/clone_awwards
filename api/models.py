@@ -22,7 +22,6 @@ class Site(models.Model):
     name=models.CharField(max_length=40, blank=True, null=True)
     url=models.URLField(null=False)
     date_posted=models.DateTimeField(default=timezone.now)
-    reviews=models.ManyToManyField('Review',blank=True)
 
 
     def __str__(self):
@@ -37,9 +36,9 @@ RATE_CHOICES =[
    
  ]
 class Review(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    project = models.ForeignKey(Site, on_delete=models.CASCADE)
-    review=models.TextField()
-    review_rating=models.CharField(choices=RATE_CHOICES, max_length=130,null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE ,null=True, blank=True)
+    project = models.ForeignKey(Site, on_delete=models.CASCADE , null=True, blank=True)
+    review=models.TextField(null=True, blank=True)
+    review_rating=models.CharField(choices=RATE_CHOICES, max_length=130,null=True, blank=True)
 
 

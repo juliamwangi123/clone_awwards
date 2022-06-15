@@ -4,7 +4,7 @@ from .forms import regUserForm,ReviewForm
 from django.contrib.auth import authenticate, login
 from rest_framework.decorators import  api_view
 from rest_framework.response import Response
-from .models import Site
+from .models import Site,Review
 from .serializer import SiteSerializer
 from urllib import request
 import json
@@ -13,6 +13,7 @@ from .models  import Site
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from .models import Site
+from .forms import ReviewForm
 
 
 # Create your views here.
@@ -49,7 +50,8 @@ def loginUser(req):
 def logoutUser(req):
     logout(req)
     return redirect('home')
-
+    
+@login_required()
 def userProfile(req):
     data=Site.objects.filter(owner=req.user)
     return render (req, 'api/profile.html', {'datas':data})
@@ -78,7 +80,7 @@ def home(req):
     
     return render(req, 'api/home.html' , context)
 
-
+@login_required()
 def submit_site(req):
     if req.method == "POST" :
         name=req.POST.get('name')
@@ -97,25 +99,14 @@ def submit_site(req):
 #     model=Site
 #     context_object_name='site'
 #     form=ReviewForm()
-
+@login_required()
 def ReviewView(request,id):
     form = ReviewForm()
     site= Site.objects.get(id=id)
-    user  = request.user
-    if request.method == 'POST':
-        form = ReviewForm(request.POST)
-        if form.is_valid():
-            data = form.save(commit=False)
-            data.user = user
-            data.project = site
-            data.save()
-            return HttpResponse('Thank you for your feedback')
-    context = {
-        'site':site,
-        'form':form,
-    }
+    
 
-    return render(request, 'api/site_detail.html', context)
+    return render(request, 'api/site_detail.html', { 'site':site, 'form':form,
+         })
 
 
 def search_project(req):
