@@ -1,6 +1,6 @@
 # clone_awwards
 ## Description
-This a webiste that allow users to view , submit and also rate other other users sites.Its uses django restframework to create an api endpoint [api](http://127.0.0.1:8000/sites):api link and  the api is consumed internally
+This a webiste that allow users to view , submit and also rate other other users sites.Its uses django restframework to create an api endpoint [api](https://jullzawwards.herokuapp.com/sites):api link and  the api is consumed internally
 
 
 #### Features
